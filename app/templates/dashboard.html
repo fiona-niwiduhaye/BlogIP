@@ -1,0 +1,98 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="dashboard">
+    <div class="side-bar border-right border-secondary pl-2">
+        <h1>{{title}}</h1>
+        <ul class="d-block pl-0">
+            <li>
+                <a class="nav-link" data-toggle='collapse' data-target='#posts' aria-expanded="false" href="#">Posts</a>
+                <ul id="posts" class="collapse">
+                    <li>
+                        <a class="all-posts" href="">all</a>
+                    </li>
+                    <li>
+                        <a class="draft-posts" href="">draft</a>
+                    </li>
+                    <li>
+                        <a class="published-posts" href="">published</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="nav-link" href="#">Comments</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#">Stats</a>
+            </li>
+            <li>
+                <a class="nav-link" href="#">Settings</a>
+            </li>
+        </ul>
+    </div>
+    <div class="main px-3 ml-3">
+        <div class="dash-content">
+            <div class=" mb-3">
+                <a href="{{ url_for('main.new_blog', uname=current_user.name) }}" class="text-light m-0 btn btn-success">
+                    New Blog Post
+                </a>
+            </div>
+            {% for blog in blogs %}
+            <div class="blog-items">
+                <ul class="pl-0 ">
+                    <li>
+                        <div class="border-bottom ">
+                            <div class=" d-inline-flex border-success pb-3 my-1 blog-dashboard flex-fill">
+                                <!-- @@@@@@@@@@@@@@@@@######################## -->
+                                <label class="d-flex align-items-center blog-index flex-fill" for="number">{{ blog.id
+                                    }}</label>
+                                <p class="d-flex align-items-center blog-title flex-fill">
+                                    <span>{{ blog.title }}</span>
+                                </p>
+                                <p class="d-flex align-items-center blog-author flex-fill text-info" data-toggle="collapse"
+                                    data-target="#blog-Options{{blog.id}}" aria-expanded="false">options
+                                    <span>
+                                        <i class="fas fa-caret-down pl-2"></i>
+                                    </span>
+                                </p>
+                                <p class="d-flex align-items-center blog-category flex-fill">{{ blog.category_id }}</p>
+                                <h3 class="d-flex align-items-center blog-comments flex-fill">
+                                    <span>
+                                        <i class="fas fa-comment-dots">
+                                            <span class="ml-1">{{ blog.comments.all() | length }}</span>
+                                        </i>
+                                    </span>
+                                </h3>
+                                <h3 class="d-flex align-items-center blog-likes flex-fill">
+                                    <span>
+                                        <i class="fas fa-thumbs-up">
+                                            <span class="ml-1">{{ blog.likes }}</span>
+                                        </i>
+                                    </span>
+                                </h3>
+                                <h3 class="d-flex align-items-center blog-dislikes flex-fill">
+                                    <span>
+                                        <i class="fas fa-thumbs-down">
+                                            <span class="ml-1">{{ blog.dislikes }}</span>
+                                        </i>
+                                    </span>
+                                </h3>
+                                <p class="d-flex align-items-center blog-date flex-fill mr-1">
+                                    <small class="text-muted">
+                                        {{ blog.time }}
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="collapse" id="blog-Options{{blog.id}}">
+                                <a href="#" class="btn btn-sm mb-2 btn-info">Edit</a>
+                                <a href="#" class="btn btn-sm mb-2 btn-danger">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

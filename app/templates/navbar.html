@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top mb-1">
+    <div class="container">
+        <a href="{{ url_for('main.home')}}" class="navbar-brand mr-5">
+            <h2 class="mb-0 light-grey text-success">IV-Blogs</h2>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+                <a class="nav-item nav-link text-info" href="{{ url_for('main.home')}}">Home</a>
+                <a class="nav-item nav-link text-info" href="#">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link text-info" href="{{ url_for('main.dashboard', user=current_user) }}">Dashboard</a>
+                <a class="nav-item nav-link text-info" href="{{ url_for('auth.logout') }}">Logout</a>
+                {% else %}
+                <a class="nav-item nav-link text-info" href="{{ url_for('auth.login') }}">Login</a>
+                <a class="nav-item nav-link text-info" href="{{ url_for('auth.register')}}">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

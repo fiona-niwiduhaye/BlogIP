@@ -39,6 +39,17 @@ class BlogPost(db.Model):
     __tablename__ = 'blogposts'
 
     id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    content = db.Column(db.String(4000), nullable=False)
+    category = db.Column(db.String(30))
+    likes = db.Column(db.Integer)
+    dislikes = db.Column(db.Integer)
+    rating = db.Column(db.Integer)
+    time = db.Column(db.String(50))
+    comments = db.relationship('Comment', backref='comments', lazy='dynamic')
+
+    def __repr__(self):
+        return f'Blog Post {self.id}, {self.title}'
 
 
 class Image(db.Model):
