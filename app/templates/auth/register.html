@@ -6,6 +6,10 @@
         <legend>Please Login Here</legend>
         <fieldset>
             <div class="form-group">
+                {{ form.username.label(class='form-control-sm d-inline-flex') }}
+                {{ form.username(class='form-control') }}
+            </div>
+            <div class="form-group">
                 {{ form.email.label(class='form-control-sm d-inline-flex') }}
                 {{ form.email(class='form-control') }}
             </div>
@@ -13,9 +17,9 @@
                 {{ form.password.label(class='form-control-sm d-inline-flex') }}
                 {{ form.password(class='form-control') }}
             </div>
-            <div class="form-group form-check-inline">
-                {{ form.remember(class='form-control form-check-input') }}
-                {{ form.remember.label(class='form-control-sm form-check-label') }}
+            <div class="form-group">
+                {{ form.password.label(class='form-control-sm d-inline-flex') }}
+                {{ form.password(class='form-control') }}
             </div>
             <div class="form-group">
                 {{ form.submit(class='btn btn-success btn-sm px-4 py-1') }}
