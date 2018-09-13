@@ -5,4 +5,4 @@ from flask import render_template
 @main.route('/')
 def home():
     title = 'This is a blog website'
-    render_template('index.html', title=title)
+    return render_template('index.html', title=title)
