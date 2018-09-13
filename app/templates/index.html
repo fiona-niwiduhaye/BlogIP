@@ -2,4 +2,7 @@
 {% block content %}
 <h1>{{ title }}</h1>
 <h1>User {{current_user.username}} is logged in</h1>
+{% for blog in blogs %}
+<p>{{ blog.title }}</p>
+{% endfor %}
 {% endblock content %}

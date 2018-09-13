@@ -1,3 +1,4 @@
+{% from "new_blog.html" import new_blog with context %}
 {% extends 'layout.html' %}
 {% block content %}
 <div class="dashboard">
@@ -33,9 +34,12 @@
     <div class="main px-3 ml-3">
         <div class="dash-content">
             <div class=" mb-3">
-                <a href="{{ url_for('main.new_blog', uname=current_user.name) }}" class="text-light m-0 btn btn-success">
+                <a href="#new-blog-form" on-click="newBlogForm()" class="text-light m-0 btn btn-success">
                     New Blog Post
                 </a>
+            </div>
+            <div class="blog-form">
+                {{ new_blog(form)}}
             </div>
             {% for blog in blogs %}
             <div class="blog-items">

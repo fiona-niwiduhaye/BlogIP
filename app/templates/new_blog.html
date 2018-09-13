@@ -1,0 +1,24 @@
+{% macro new_blog(form) %}
+<div class="new_blog container">
+    <form action="" method="POST">
+        <legend>Create A New Blog</legend>
+        <fieldset class="form-box">
+            <div class="form-group">
+                {{ form.title.label(class='form-control-sm btn-sm btn-light') }}
+                {{ form.title(class='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.content.label(class='form-control-sm btn-sm btn-light') }}
+                {{ form.content(class='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.category.label(class='form-control-sm btn-sm btn-light') }}
+                {{ form.category(class='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class='form-control-sm btn-sm btn-light') }}
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endmacro %}
