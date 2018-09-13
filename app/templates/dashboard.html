@@ -8,7 +8,7 @@
                 <a class="nav-link" data-toggle='collapse' data-target='#posts' aria-expanded="false" href="#">Posts</a>
                 <ul id="posts" class="collapse">
                     <li>
-                        <a class="all-posts" href="">all</a>
+                        <a class="all-posts" onclick="clicked()" href="">all</a>
                     </li>
                     <li>
                         <a class="draft-posts" href="">draft</a>
@@ -17,6 +17,7 @@
                         <a class="published-posts" href="">published</a>
                     </li>
                 </ul>
+
             </li>
             <li>
                 <a class="nav-link" href="#">Comments</a>
@@ -42,7 +43,6 @@
                     <li>
                         <div class="border-bottom ">
                             <div class=" d-inline-flex border-success pb-3 my-1 blog-dashboard flex-fill">
-                                <!-- @@@@@@@@@@@@@@@@@######################## -->
                                 <label class="d-flex align-items-center blog-index flex-fill" for="number">{{ blog.id
                                     }}</label>
                                 <p class="d-flex align-items-center blog-title flex-fill">
@@ -54,7 +54,7 @@
                                         <i class="fas fa-caret-down pl-2"></i>
                                     </span>
                                 </p>
-                                <p class="d-flex align-items-center blog-category flex-fill">{{ blog.category_id }}</p>
+                                <p class="d-flex align-items-center blog-category flex-fill">{{ blog.category }}</p>
                                 <h3 class="d-flex align-items-center blog-comments flex-fill">
                                     <span>
                                         <i class="fas fa-comment-dots">

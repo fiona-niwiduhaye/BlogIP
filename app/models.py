@@ -62,6 +62,7 @@ class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
+    blogpost_id = db.Column(db.Integer, db.ForeignKey('blogposts.id'))
 
 
 @login_manager.user_loader

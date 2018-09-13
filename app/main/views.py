@@ -12,6 +12,13 @@ def home():
 
 @main.route('/dashboard')
 def dashboard():
-    title = 'Welcome To Your Dashboard'
+    title = 'Dashboard'
     blogs = BlogPost.query.all()
     return render_template('dashboard.html', title=title)
+
+
+@main.route('/dashboard/new/blog')
+def new_blog():
+    title = 'Dashboard'
+    form = BlogPost()
+    return render_template('dashboard.html', title=title, form=form)

@@ -1,0 +1,256 @@
+/* styling for the homepage image slider */
+.box {
+    width: 100%;
+    overflow: hidden;
+    height: 350px;
+}
+
+.box-link {
+    color: #fff
+}
+
+.box-link:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dim {
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    background-color: rgba(1, 1, 1, 0.9);
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+}
+
+.comment-block {
+    position: absolute;
+    z-index: 3;
+    width: 70%;
+    min-height: 100%;
+    top: 12%;
+    left: 15%;
+    background-color: rgba(31, 171, 222, 0.4);
+    border-radius: 10px;
+}
+
+.comments {
+    background: #dddddd;
+    height: 100vw;
+}
+
+.comment-box {
+    border: #a1a1a1 1px solid;
+    border-left: #1ab5ee 3px solid;
+    padding: 1rem;
+    margin: 6px;
+}
+
+.figure {
+    width: 400%;
+    height: 100%;
+    left: 0%;
+    position: relative;
+    background-color: #4f4943;
+    animation-name: slider;
+    animation-duration: 35000ms;
+    animation-iteration-count: infinite;
+}
+
+.slide {
+    width: 100%;
+}
+
+.bg-lavender {
+    background-color: #17a2b8
+}
+
+.slide-img {
+    width: 100%;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    background-color: rgba(#4f4943, 0.7)
+}
+
+@keyframes slider {
+    0% {
+        left: 0%
+    }
+
+    22% {
+        left: 0%;
+    }
+
+    25% {
+        left: -100%;
+    }
+
+    47% {
+        left: -100%;
+    }
+
+    50% {
+        left: -200%;
+    }
+
+    72% {
+        left: -200%;
+    }
+
+    75% {
+        left: -300%;
+    }
+
+    100% {
+        left: -300%;
+    }
+}
+
+/* End of home page image slider css styling */
+/* styling for the blogs on the homepage */
+.blogs {
+    background: #dddddd
+}
+
+.blog-row {
+    padding: 1rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 'a b c d';
+}
+
+.blog-box {
+    background-color: #3f3933;
+    border: #232221 solid 2px;
+    border-radius: 5%;
+    padding: 0.75rem;
+    margin: 0.75rem;
+}
+
+.a1 {
+    grid-area: a;
+}
+
+.a2 {
+    grid-area: b;
+}
+
+.a3 {
+    grid-area: c;
+}
+
+.a4 {
+    grid-area: d;
+}
+
+/* end of styling for the home page blogs */
+.light-grey {
+    color: #dddddd
+}
+
+.field-box {
+    border: solid 1px #a1a1a1;
+    padding: 1rem;
+    background: #eeeeee;
+    margin: 1rem 0.5rem;
+    border-radius: 5px;
+}
+
+.dashboard {
+    margin-top: 100px;
+    margin-left: 35px;
+    margin-right: 35px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 'sidebar main'
+}
+
+.side-bar {
+    grid-area: sidebar;
+}
+
+.main {
+    grid-area: main;
+    padding: 10px;
+}
+
+li {
+    list-style: none;
+    padding: 10px;
+}
+
+ul,
+li,
+h1,
+p,
+a,
+h2,
+h3,
+label {
+    margin-bottom: 0% !important;
+}
+
+h1,
+p,
+a,
+h2,
+h3,
+label {
+    margin-right: 1rem !important;
+}
+
+.blog-dashboard {
+    width: 100%;
+    display: grid;
+    grid-auto-columns: 1fr 16fr 3fr 3fr 2fr 2fr 2fr 3fr;
+    grid-template-areas: 'a b c d e f g h'
+}
+
+.blog-index {
+    grid-area: a
+}
+
+.blog-title {
+    grid-area: b;
+    min-width: 45%;
+}
+
+.blog-category {
+    grid-area: c
+}
+
+.blog-author {
+    grid-area: d
+}
+
+.blog-comments {
+    grid-area: e
+}
+
+.blog-likes {
+    grid-area: f
+}
+
+.blog-dislikes {
+    grid-area: g
+}
+
+.blog-date {
+    grid-area: h
+}
+
+.fa,
+.fas,
+.far {
+    font-size: 16px;
+}
+
+.text-md {
+    font-size: 36px;
+    color: #eece1a
+}
