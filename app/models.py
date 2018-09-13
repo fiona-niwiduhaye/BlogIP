@@ -27,6 +27,10 @@ class User(db.Model, UserMixin):
     def verify_password(self, password):
         return check_password_hash(self.pass_hash, password)
 
+    def save_user(self, user):
+        db.session.add(user)
+        db.session.commit()
+
     def __repr__(self):
         return f'User {self.id}, {self.username}, {self.email}'
 
@@ -47,3 +51,8 @@ class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
