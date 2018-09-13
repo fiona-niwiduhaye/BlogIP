@@ -29,3 +29,21 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f'User {self.id}, {self.username}, {self.email}'
+
+
+class BlogPost(db.Model):
+    __tablename__ = 'blogposts'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+
+class Image(db.Model):
+    __tablename__ = 'images'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer, primary_key=True)

@@ -7,6 +7,8 @@ class Config():
 
 
 class DevConfig(Config):
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://vikki:sasawa@localhost/blogs'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
     DEBUG = True
     pass
 
