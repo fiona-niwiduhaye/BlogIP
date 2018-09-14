@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     pass_hash = db.Column(db.String(255))
     bio = db.Column(db.String)
     profile_photo = db.Column(db.String, default='default.jpg')
+    blogs = db.relationship('BlogPost', backref='author', lazy='dynamic')
 
     @property
     def password(self):
@@ -46,6 +47,7 @@ class BlogPost(db.Model):
     dislikes = db.Column(db.Integer)
     rating = db.Column(db.Integer)
     time = db.Column(db.String(50))
+    blogpost_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='comments', lazy='dynamic')
 
     def save_blog(self, blog):
