@@ -26,15 +26,9 @@ def dashboard():
                             likes=0,
                             dislikes=0,
                             rating=0,
-                            time=datetime.utcnow().strftime("%H:%M"))
+                            time=datetime.utcnow().strftime("%H:%M"),
+                            author=current_user)
         db.session.add(new_blog)
         db.session.commit()
         return redirect(url_for('main.dashboard'))
-    return render_template('dashboard.html', title=title, form=form)
-
-
-@main.route('/dashboard/new/blog')
-def new_blog():
-    title = 'Dashboard'
-    form = BlogPost()
     return render_template('dashboard.html', title=title, form=form)
