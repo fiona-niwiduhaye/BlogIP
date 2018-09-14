@@ -3,6 +3,7 @@
     <form action="" method="POST">
         <legend>Create A New Blog</legend>
         <fieldset class="form-box">
+            {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.title.label(class='form-control-sm btn-sm btn-light') }}
                 {{ form.title(class='form-control') }}

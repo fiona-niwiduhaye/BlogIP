@@ -4,6 +4,7 @@ from flask_login import current_user
 from ..models import BlogPost
 from .forms import BlogPostForm
 from datetime import datetime
+from .. import db
 
 
 @main.route('/')
@@ -26,7 +27,8 @@ def dashboard():
                             dislikes=0,
                             rating=0,
                             time=datetime.utcnow().strftime("%H:%M"))
-        new_blog.save_blog(new_blog)
+        db.session.add(new_blog)
+        db.session.commit()
         return redirect(url_for('main.dashboard'))
     return render_template('dashboard.html', title=title, form=form)
 
