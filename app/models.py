@@ -48,6 +48,10 @@ class BlogPost(db.Model):
     time = db.Column(db.String(50))
     comments = db.relationship('Comment', backref='comments', lazy='dynamic')
 
+    def save_blog(self, blog):
+        db.session.add(blog)
+        db.session.commit()
+
     def __repr__(self):
         return f'Blog Post {self.id}, {self.title}'
 
