@@ -12,3 +12,9 @@ class BlogPostForm(FlaskForm):
     category = SelectField('Category', choices=[
                            ('Art', 'Art'), ('Business', 'Business'), ('Medicine', 'Medicine'), ('Music', 'Music')])
     submit = SubmitField('Publish')
+
+
+class CommentForm(FlaskForm):
+    content = TextAreaField('Comment', validators=[DataRequired()])
+    blog_id = StringField()
+    submit = SubmitField('post')

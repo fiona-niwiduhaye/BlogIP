@@ -8,6 +8,25 @@
     <div>
         <p>{{ blog.content }}</p>
     </div>
+    <button>comment</button>
 </div>
+<div class="comments">
+    <form action="" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.blog_id(value=blog.id, class='d-none') }}
+        <legend>Comment</legend>
+        <div class="form-group">
+            {{ form.content.label(class='form-control-sm btn-sm btn-light') }}
+            {{ form.content(class='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class='form-control-sm btn-sm btn-light') }}
+        </div>
+    </form>
+    <div class="comments-display">
+
+    </div>
+</div>
+
 {% endfor %}
 {% endblock content %}

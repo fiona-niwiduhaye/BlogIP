@@ -1,17 +1,24 @@
 from . import main
 from flask import render_template, redirect, url_for
 from flask_login import current_user
-from ..models import BlogPost
-from .forms import BlogPostForm
+from ..models import BlogPost, Comment
+from .forms import BlogPostForm, CommentForm
 from datetime import datetime
 from .. import db
 
 
-@main.route('/')
+@main.route('/', methods=['GET', 'POST'])
 def home():
     title = 'This is a blog website'
     blogs = BlogPost.query.all()
-    return render_template('index.html', title=title, blogs=blogs)
+    form = CommentForm()
+    if form.validate_on_submit():
+        blog = BlogPost.query.get(int(form.blog_id.data))
+        comments = blog.comments.all()
+        new_comment = Comment(content=form.content.data, likes=0,
+                              dislikes=0, time=datetime.utcnow().strftime("%H:%M"), blog=blog)
+        new_comment.save_blog(new_comment)
+    return render_template('index.html', title=title, blogs=blogs, form=form)
 
 
 @main.route('/dashboard', methods=['GET', 'POST'])

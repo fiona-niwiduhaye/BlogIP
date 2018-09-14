@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String)
     profile_photo = db.Column(db.String, default='default.jpg')
     blogs = db.relationship('BlogPost', backref='author', lazy='dynamic')
+    blogs = db.relationship('Comment', backref='author', lazy='dynamic')
 
     @property
     def password(self):
@@ -48,7 +49,7 @@ class BlogPost(db.Model):
     rating = db.Column(db.Integer)
     time = db.Column(db.String(50))
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    comments = db.relationship('Comment', backref='comments', lazy='dynamic')
+    comments = db.relationship('Comment', backref='blog', lazy='dynamic')
 
     def save_blog(self, blog):
         db.session.add(blog)
@@ -73,13 +74,14 @@ class Comment(db.Model):
     dislikes = db.Column(db.Integer)
     time = db.Column(db.String(50))
     blogpost_id = db.Column(db.Integer, db.ForeignKey('blogposts.id'))
+    blogpost_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_blog(self, blog):
         db.session.add(blog)
         db.session.commit()
 
     def __repr__(self):
-        return f'Blog Post {self.id}, {self.title}'
+        return f'Blog Post {self.id}, {self.}'
 
 
 @login_manager.user_loader

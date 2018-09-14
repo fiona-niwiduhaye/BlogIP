@@ -7,7 +7,7 @@ from flask_login import LoginManager
 # creating instances of flask extensions by initializing the flask extenstions
 db = SQLAlchemy()
 login_manager = LoginManager()
-login_manager.session_protection = 'strong'
+login_manager.session_protection = '    '
 # telling the login manager where it should operate from
 login_manager.login_view = 'auth.login'
 
