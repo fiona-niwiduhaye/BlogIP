@@ -68,7 +68,18 @@ class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(4000), nullable=False)
+    likes = db.Column(db.Integer)
+    dislikes = db.Column(db.Integer)
+    time = db.Column(db.String(50))
     blogpost_id = db.Column(db.Integer, db.ForeignKey('blogposts.id'))
+
+    def save_blog(self, blog):
+        db.session.add(blog)
+        db.session.commit()
+
+    def __repr__(self):
+        return f'Blog Post {self.id}, {self.title}'
 
 
 @login_manager.user_loader

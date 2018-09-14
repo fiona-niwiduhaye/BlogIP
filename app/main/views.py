@@ -28,7 +28,6 @@ def dashboard():
                             rating=0,
                             time=datetime.utcnow().strftime("%H:%M"),
                             author=current_user)
-        db.session.add(new_blog)
-        db.session.commit()
+        new_blog.save_blog(new_blog)
         return redirect(url_for('main.dashboard'))
     return render_template('dashboard.html', title=title, form=form)
