@@ -1,19 +1,3 @@
-/* styling for the homepage image slider */
-.box {
-    width: 100%;
-    overflow: hidden;
-    height: 350px;
-}
-
-.box-link {
-    color: #fff
-}
-
-.box-link:hover {
-    color: #fff;
-    text-decoration: none;
-}
-
 .dim {
     position: fixed;
     min-width: 100%;
@@ -22,6 +6,10 @@
     top: 0%;
     left: 0%;
     z-index: 2;
+}
+
+.content-block {
+    top: 10%;
 }
 
 .comment-block {
@@ -33,6 +21,37 @@
     left: 15%;
     background-color: rgba(31, 171, 222, 0.4);
     border-radius: 10px;
+}
+
+/* navbar styling */
+.navbar {
+    height: 90px;
+    background-color: #2b2d32;
+    /* background-color: #414347; */
+}
+
+.navbar-brand {
+    height: 100%;
+    border-right: #4f4943 1px solid;
+    color: #d5d5d6;
+    font-family: "Times New Roman", Times, serif;
+}
+
+.navbar-brand:hover {
+    color: #eeefff !important;
+}
+
+.nav-link {
+    color: #ccc;
+}
+
+.nav-link:hover {
+    color: #989a9f !important;
+}
+
+.nav-cat {
+    height: 100%;
+    border-right: #4f4943 1px solid;
 }
 
 .comments {
@@ -63,7 +82,7 @@
 }
 
 .bg-lavender {
-    background-color: #17a2b8
+    background-color: #17a2b8;
 }
 
 .slide-img {
@@ -74,12 +93,12 @@
     position: absolute;
     bottom: 5%;
     left: 5%;
-    background-color: rgba(#4f4943, 0.7)
+    background-color: rgba(#4f4943, 0.7);
 }
 
 @keyframes slider {
     0% {
-        left: 0%
+        left: 0%;
     }
 
     22% {
@@ -114,14 +133,14 @@
 /* End of home page image slider css styling */
 /* styling for the blogs on the homepage */
 .blogs {
-    background: #dddddd
+    background: #dddddd;
 }
 
 .blog-row {
     padding: 1rem 2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-areas: 'a b c d';
+    grid-template-areas: "a b c d";
 }
 
 .blog-box {
@@ -150,7 +169,7 @@
 
 /* end of styling for the home page blogs */
 .light-grey {
-    color: #dddddd
+    color: #dddddd;
 }
 
 .field-box {
@@ -167,7 +186,7 @@
     margin-right: 35px;
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-areas: 'sidebar main'
+    grid-template-areas: "sidebar main";
 }
 
 .side-bar {
@@ -208,11 +227,11 @@ label {
     width: 100%;
     display: grid;
     grid-auto-columns: 1fr 16fr 3fr 3fr 2fr 2fr 2fr 3fr;
-    grid-template-areas: 'a b c d e f g h'
+    grid-template-areas: "a b c d e f g h";
 }
 
 .blog-index {
-    grid-area: a
+    grid-area: a;
 }
 
 .blog-title {
@@ -221,27 +240,27 @@ label {
 }
 
 .blog-category {
-    grid-area: c
+    grid-area: c;
 }
 
 .blog-author {
-    grid-area: d
+    grid-area: d;
 }
 
 .blog-comments {
-    grid-area: e
+    grid-area: e;
 }
 
 .blog-likes {
-    grid-area: f
+    grid-area: f;
 }
 
 .blog-dislikes {
-    grid-area: g
+    grid-area: g;
 }
 
 .blog-date {
-    grid-area: h
+    grid-area: h;
 }
 
 .fa,
@@ -252,5 +271,5 @@ label {
 
 .text-md {
     font-size: 36px;
-    color: #eece1a
+    color: #eece1a;
 }

@@ -13,12 +13,14 @@ def home():
     blogs = BlogPost.query.all()
     form = CommentForm()
     if form.validate_on_submit():
+        blogs = BlogPost.query.all()
         blog = BlogPost.query.get(int(form.blog_id.data))
-        comments = blog.comments.all()
         new_comment = Comment(content=form.content.data, likes=0,
                               dislikes=0, time=datetime.utcnow().strftime("%H:%M"), blog=blog)
         new_comment.save_blog(new_comment)
-    return render_template('index.html', title=title, blogs=blogs, form=form, comments=comments)
+        comments = blog.comments.all()
+        return render_template('index.html', title=title, blogs=blogs, form=form, comments=comments)
+    return render_template('index.html', title=title, blogs=blogs, form=form)
 
 
 @main.route('/dashboard', methods=['GET', 'POST'])

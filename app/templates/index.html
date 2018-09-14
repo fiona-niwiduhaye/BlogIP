@@ -10,8 +10,9 @@
     </div>
     <button>comment</button>
 </div>
-<div class="comments">
+<div class="comment-section">
     <form action="" method="POST">
+        {{ blog.id }}
         {{ form.hidden_tag() }}
         {{ form.blog_id(value=blog.id, class='d-none') }}
         <legend>Comment</legend>
