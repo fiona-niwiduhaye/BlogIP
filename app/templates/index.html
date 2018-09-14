@@ -24,7 +24,11 @@
         </div>
     </form>
     <div class="comments-display">
-
+        {% for comment in comments %}
+        <p>
+            {{ comment.content }}
+        </p>
+        {% endfor %}
     </div>
 </div>
 

@@ -73,15 +73,15 @@ class Comment(db.Model):
     likes = db.Column(db.Integer)
     dislikes = db.Column(db.Integer)
     time = db.Column(db.String(50))
-    blogpost_id = db.Column(db.Integer, db.ForeignKey('blogposts.id'))
-    blogpost_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    blog_id = db.Column(db.Integer, db.ForeignKey('blogposts.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def save_blog(self, blog):
         db.session.add(blog)
         db.session.commit()
 
     def __repr__(self):
-        return f'Blog Post {self.id}, {self.}'
+        return f'Blog Post {self.id}, {self.blog}, {self.author}, {self.content}'
 
 
 @login_manager.user_loader
