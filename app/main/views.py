@@ -31,8 +31,12 @@ def dashboard():
     del_form = DeletePost()
     if del_form.validate_on_submit():
         blog_id = int(del_form.post_id.data)
-        del_blog = BlogPost.query.get(blog_id)
-        del_blog.delete_blog(del_blog)
+        del_blog = BlogPost.query.filter_by(id=blog_id).first()
+        if del_blog:
+            del_blog.delete_blog(del_blog)
+            print(del_blog)
+            return redirect(url_for('main.dashboard'))
+        return redirect(url_for('main.dashboard'))
     if form.validate_on_submit():
         new_blog = BlogPost(title=form.title.data,
                             content=form.content.data,
