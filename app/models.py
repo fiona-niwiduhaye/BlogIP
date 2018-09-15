@@ -48,6 +48,7 @@ class BlogPost(db.Model):
     dislikes = db.Column(db.Integer)
     rating = db.Column(db.Integer)
     time = db.Column(db.String(50))
+    image = db.Column(db.String)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='blog', lazy='dynamic')
 

@@ -3,6 +3,8 @@ import os
 
 class Config():
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    # configure the path to where image files will be saved since it is not advisable to save files in the database
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
     pass
 
 

@@ -1,10 +1,10 @@
 from . import main
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, request
 from flask_login import current_user
 from ..models import BlogPost, Comment
 from .forms import BlogPostForm, CommentForm
 from datetime import datetime
-from .. import db
+from .. import db, photos
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -37,6 +37,11 @@ def dashboard():
                             rating=0,
                             time=datetime.utcnow().strftime("%H:%M"),
                             author=current_user)
+        if 'photo' in request.files:
+            filename = photos.save(request.files['photo'])
+            path = f'photos/{filename}'
+            new_blog.image = path
         new_blog.save_blog(new_blog)
+
         return redirect(url_for('main.dashboard'))
     return render_template('dashboard.html', title=title, form=form)
