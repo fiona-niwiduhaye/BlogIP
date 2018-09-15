@@ -1,10 +1,12 @@
 from flask import Flask
 from config import config_options
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail
 from flask_login import LoginManager
 from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 # creating instances of flask extensions by initializing the flask extenstions
+mail = Mail()
 db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = '    '
@@ -22,6 +24,7 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     configure_uploads(app, photos)
+    mail.init_app(app)
     # registering blueprint
     from .main import main as main_bp
     app.register_blueprint(main_bp, url_prefix='/home')

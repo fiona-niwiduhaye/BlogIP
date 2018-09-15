@@ -18,3 +18,8 @@ class CommentForm(FlaskForm):
     content = TextAreaField('Comment', validators=[DataRequired()])
     blog_id = StringField()
     submit = SubmitField('post')
+
+
+class DeletePost(FlaskForm):
+    post_id = StringField('')
+    submit = SubmitField('delete')

@@ -2,7 +2,7 @@ from . import main
 from flask import render_template, redirect, url_for, request
 from flask_login import current_user
 from ..models import BlogPost, Comment
-from .forms import BlogPostForm, CommentForm
+from .forms import BlogPostForm, CommentForm, DeletePost
 from datetime import datetime
 from .. import db, photos
 
@@ -28,6 +28,11 @@ def dashboard():
     title = 'Dashboard'
     blogs = BlogPost.query.all()
     form = BlogPostForm()
+    del_form = DeletePost()
+    if del_form.validate_on_submit():
+        blog_id = int(del_form.post_id.data)
+        del_blog = BlogPost.query.get(blog_id)
+        del_blog.delete_blog(del_blog)
     if form.validate_on_submit():
         new_blog = BlogPost(title=form.title.data,
                             content=form.content.data,
@@ -44,4 +49,4 @@ def dashboard():
         new_blog.save_blog(new_blog)
 
         return redirect(url_for('main.dashboard'))
-    return render_template('dashboard.html', title=title, form=form, blogs=blogs)
+    return render_template('dashboard.html', title=title, form=form, blogs=blogs, del_form=del_form)

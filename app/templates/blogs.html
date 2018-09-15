@@ -1,11 +1,11 @@
-{% macro all_blogs(blogs) %}
+{% macro all_blogs(blogs, del_form) %}
 {% for blog in blogs %}
 <div class="blog-items">
     <ul class="pl-0 ">
         <li>
             <div class="border-bottom ">
                 <div class=" d-inline-flex border-success pb-3 my-1 blog-dashboard flex-fill">
-                    <label class="d-flex align-items-center blog-index flex-fill border-right border-info" for="number">{{
+                    <label class="d-flex align-items-center blog-index flex-fill border-right border-infogv v xs" for="number">{{
                         blog.id
                         }}</label>
                     <p class="d-flex align-items-center blog-title flex-fill">
@@ -46,8 +46,19 @@
                     </p>
                 </div>
                 <div class="collapse" id="blog-Options{{blog.id}}">
-                    <a href="#" class="btn btn-sm mb-2 btn-info">Edit</a>
-                    <a href="#" class="btn btn-sm mb-2 btn-danger">Delete</a>
+                    <form class="d-inline-flex" action="" method="POST">
+                        <fieldset>
+                            {{ del_form.hidden_tag() }}
+                            {{del_form.post_id(value=blog.id, class='d-none')}}
+                            {{ del_form.submit(class='form-control-sm btn btn-danger') }}
+                        </fieldset>
+                        <form class="d-inline-flex" action="" method="POST">
+                            <fieldset>
+                                {{ del_form.hidden_tag() }}
+                                {{del_form.post_id(value=blog.id, class='d-none')}}
+                                {{ del_form.submit(class='form-control-sm btn btn-danger') }}
+                            </fieldset>
+                        </form>
                 </div>
             </div>
         </li>

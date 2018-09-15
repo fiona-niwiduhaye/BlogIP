@@ -56,6 +56,10 @@ class BlogPost(db.Model):
         db.session.add(blog)
         db.session.commit()
 
+    def delete_blog(self, blog):
+        db.session.delete(blog)
+        db.session.commit()
+
     def __repr__(self):
         return f'Blog Post {self.id}, {self.title}'
 
