@@ -181,7 +181,7 @@
 }
 
 .dashboard {
-    margin-top: 100px;
+    margin-top: 30px;
     margin-left: 35px;
     margin-right: 35px;
     display: grid;
@@ -226,31 +226,37 @@ label {
 .blog-dashboard {
     width: 100%;
     display: grid;
-    grid-auto-columns: 1fr 16fr 3fr 3fr 2fr 2fr 2fr 3fr;
-    grid-template-areas: "a b c d e f g h";
+    grid-auto-columns: 1fr 16fr 3fr 3fr 3fr;
+    grid-template-areas: "a b c d e";
 }
 
 .blog-index {
     grid-area: a;
+    width: 4%;
+
 }
 
 .blog-title {
     grid-area: b;
-    min-width: 45%;
+    width: 60%;
 }
 
 .blog-category {
     grid-area: c;
+    width: 12%;
 }
 
 .blog-author {
     grid-area: d;
+    width: 12%;
 }
 
 .blog-comments {
     grid-area: e;
+    width: 12%;
 }
 
+/* 
 .blog-likes {
     grid-area: f;
 }
@@ -261,7 +267,7 @@ label {
 
 .blog-date {
     grid-area: h;
-}
+} */
 
 .fa,
 .fas,

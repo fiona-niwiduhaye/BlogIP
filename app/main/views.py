@@ -26,7 +26,7 @@ def home():
 @main.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     title = 'Dashboard'
-    # blogs = BlogPost.query.all()
+    blogs = BlogPost.query.all()
     form = BlogPostForm()
     if form.validate_on_submit():
         new_blog = BlogPost(title=form.title.data,
@@ -44,4 +44,4 @@ def dashboard():
         new_blog.save_blog(new_blog)
 
         return redirect(url_for('main.dashboard'))
-    return render_template('dashboard.html', title=title, form=form)
+    return render_template('dashboard.html', title=title, form=form, blogs=blogs)

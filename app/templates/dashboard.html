@@ -1,4 +1,5 @@
 {% from "new_blog.html" import new_blog with context %}
+{% from "blogs.html" import all_blogs with context %}
 {% extends 'layout.html' %}
 {% block content %}
 <div class="dashboard">
@@ -38,63 +39,12 @@
                     New Blog Post
                 </a>
             </div>
-            <div class="blog-form">
-                {{ new_blog(form)}}
+            <div class="blog-form d-none">
+                {{ new_blog(form) }}
             </div>
-            {% for blog in blogs %}
-            <div class="blog-items">
-                <ul class="pl-0 ">
-                    <li>
-                        <div class="border-bottom ">
-                            <div class=" d-inline-flex border-success pb-3 my-1 blog-dashboard flex-fill">
-                                <label class="d-flex align-items-center blog-index flex-fill" for="number">{{ blog.id
-                                    }}</label>
-                                <p class="d-flex align-items-center blog-title flex-fill">
-                                    <span>{{ blog.title }}</span>
-                                </p>
-                                <p class="d-flex align-items-center blog-author flex-fill text-info" data-toggle="collapse"
-                                    data-target="#blog-Options{{blog.id}}" aria-expanded="false">options
-                                    <span>
-                                        <i class="fas fa-caret-down pl-2"></i>
-                                    </span>
-                                </p>
-                                <p class="d-flex align-items-center blog-category flex-fill">{{ blog.category }}</p>
-                                <h3 class="d-flex align-items-center blog-comments flex-fill">
-                                    <span>
-                                        <i class="fas fa-comment-dots">
-                                            <span class="ml-1">{{ blog.comments.all() | length }}</span>
-                                        </i>
-                                    </span>
-                                </h3>
-                                <h3 class="d-flex align-items-center blog-likes flex-fill">
-                                    <span>
-                                        <i class="fas fa-thumbs-up">
-                                            <span class="ml-1">{{ blog.likes }}</span>
-                                        </i>
-                                    </span>
-                                </h3>
-                                <h3 class="d-flex align-items-center blog-dislikes flex-fill">
-                                    <span>
-                                        <i class="fas fa-thumbs-down">
-                                            <span class="ml-1">{{ blog.dislikes }}</span>
-                                        </i>
-                                    </span>
-                                </h3>
-                                <p class="d-flex align-items-center blog-date flex-fill mr-1">
-                                    <small class="text-muted">
-                                        {{ blog.time }}
-                                    </small>
-                                </p>
-                            </div>
-                            <div class="collapse" id="blog-Options{{blog.id}}">
-                                <a href="#" class="btn btn-sm mb-2 btn-info">Edit</a>
-                                <a href="#" class="btn btn-sm mb-2 btn-danger">Delete</a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div class="all-blogs">
+                {{ all_blogs(blogs) }}
             </div>
-            {% endfor %}
         </div>
     </div>
 </div>
