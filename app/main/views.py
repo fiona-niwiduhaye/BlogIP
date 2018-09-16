@@ -11,17 +11,7 @@ from .. import db, photos
 def home():
     title = 'This is a blog website'
     blogs = BlogPost.query.all()
-    form = CommentForm()
-
-    if form.validate_on_submit():
-        blogs = BlogPost.query.all()
-        blog = BlogPost.query.get(int(form.blog_id.data))
-        new_comment = Comment(content=form.content.data, likes=0,
-                              dislikes=0, time=datetime.utcnow().strftime("%H:%M"), blog=blog)
-        new_comment.save_blog(new_comment)
-        comments = blog.comments.all()
-        return render_template('index.html', title=title, blogs=blogs, form=form, comments=comments)
-    return render_template('index.html', title=title, blogs=blogs, form=form)
+    return render_template('index.html', title=title, blogs=blogs)
 
 
 @main.route('/dashboard', methods=['GET', 'POST'])
@@ -76,7 +66,18 @@ def dashboard():
     return render_template('dashboard.html', title=title, form=form, blogs=blogs, del_form=del_form, edit_form=edit_form)
 
 
-@main.route('/<title>')
+@main.route('/<title>', methods=['GET', 'POST'])
 def article(title):
+    print(title)
+    form = CommentForm()
+
     article = BlogPost.query.filter_by(title=title).first()
-    return render_template('article.html', article=article)
+    if form.validate_on_submit():
+        blogs = BlogPost.query.all()
+        blog = BlogPost.query.get(int(form.blog_id.data))
+        new_comment = Comment(content=form.content.data, likes=0,
+                              dislikes=0, time=datetime.utcnow().strftime("%H:%M"), blog=blog, author=current_user)
+        new_comment.save_blog(new_comment)
+        comments = blog.comments.all()
+        return render_template('index.html', title=title, blogs=blogs,  comments=comments)
+    return render_template('article.html', article=article, form=form)
