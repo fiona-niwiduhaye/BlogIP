@@ -40,3 +40,8 @@ class DeletePost(FlaskForm):
 class LikeShit(FlaskForm):
     blog_id = StringField()
     submit_like = SubmitField('Likes')
+
+
+class DislikeShit(FlaskForm):
+    blog_id = StringField()
+    submit_dislike = SubmitField('Dislikes')

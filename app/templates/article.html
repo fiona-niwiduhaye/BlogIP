@@ -31,8 +31,12 @@
                         </form>
                     </div>
                     <div class="art-comments d-block flex-fill pl-5 my-3 border-left border-light">
-                        <h4 class="mb-0">{{ article.dislikes }}</h4>
-                        <h6 class="text-muted">Dislikes</h6>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {{ dislike.hidden_tag() }}
+                            {{ dislike.blog_id(class='d-none', value=article.id) }}
+                            <h4 class="mb-0">{{ article.dislikes }}</h4>
+                            {{ dislike.submit_dislike(class='text-muted btn btn-light btn-sm')}}
+                        </form>
                     </div>
                 </div>
                 <div class="my-5 article-img">
@@ -65,13 +69,23 @@
                     </form>
                 </div>
                 {% for comment in article.comments.all() %}
-                <div class="comments">
-                    <p>{{ comment.content }}</p>
-                    <p>{{ comment.time }}</p>
+                <div class="comments my-2">
+                    <p>By
+                        <span class="font-italic text-info">{{ comment.author.username }}
+                        </span>
+                        at
+                        <span class="font-italic text-info">
+                            {{ comment.time }}
+                        </span>
+                    </p>
+                    <h4>{{ comment.content }}</h4>
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
+    <div class="py-5">
+    </div>
+    <p>.</p>
 </div>
 {% endblock content %}

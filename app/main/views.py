@@ -2,7 +2,7 @@ from . import main
 from flask import render_template, redirect, url_for, request
 from flask_login import current_user
 from ..models import BlogPost, Comment
-from .forms import BlogPostForm, CommentForm, DeletePost, BlogEditForm, LikeShit
+from .forms import BlogPostForm, CommentForm, DeletePost, BlogEditForm, LikeShit, DislikeShit
 from datetime import datetime
 from .. import db, photos
 
@@ -71,6 +71,7 @@ def article(title):
     print(title)
     form = CommentForm()
     like = LikeShit()
+    dislike = DislikeShit()
 
     article = BlogPost.query.filter_by(title=title).first()
     if form.validate_on_submit():
@@ -81,9 +82,15 @@ def article(title):
         new_comment.save_blog(new_comment)
         comments = blog.comments.all()
         return redirect(url_for('main.article', title=title, blogs=blogs,  comments=comments))
+
     elif like.validate_on_submit():
         article.likes = article.likes + 1
         db.session.commit()
-        print(article.likes)
+        print('WRONG')
 
-    return render_template('article.html', article=article, form=form, like=like)
+    elif dislike.validate_on_submit():
+        article.dislikes = article.dislikes + 1
+        db.session.commit()
+        print(article.dislikes)
+
+    return render_template('article.html', article=article, form=form, like=like, dislike=dislike)
