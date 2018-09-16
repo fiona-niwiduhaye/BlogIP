@@ -44,6 +44,7 @@
                 {{ new_blog(form) }}
             </div>
             <div class="all-blogs dn">
+                {{ edit_form.csrf_token }}
                 {{ all_blogs(blogs, del_form, edit_form) }}
             </div>
         </div>
