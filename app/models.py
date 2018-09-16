@@ -51,6 +51,7 @@ class BlogPost(db.Model):
     image = db.Column(db.String)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='blog', lazy='dynamic')
+    photos = db.relationship('Image', backref='blog', lazy="dynamic")
 
     def save_blog(self, blog):
         db.session.add(blog)
@@ -60,14 +61,19 @@ class BlogPost(db.Model):
         db.session.delete(blog)
         db.session.commit()
 
+    def save_changes(self, blog):
+        db.session.commit()
+
     def __repr__(self):
         return f'Blog Post {self.id}, {self.title}'
 
 
 class Image(db.Model):
-    __tablename__ = 'images'
+    __tablename__ = 'photos'
 
     id = db.Column(db.Integer, primary_key=True)
+    pic_path = db.Column(db.String())
+    user_id = db.Column(db.Integer, db.ForeignKey("blogposts.id"))
 
 
 class Comment(db.Model):

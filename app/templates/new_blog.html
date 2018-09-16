@@ -1,15 +1,12 @@
 {% macro new_blog(form) %}
 <div class="new_blog container">
     <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
         <legend>Create A New Blog</legend>
         <fieldset class="form-box">
-            {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.title.label(class='form-control-sm btn-sm btn-light') }}
                 {{ form.title(class='form-control') }}
-            </div>
-            <div class="form-control">
-                <input type="file" name="photo" class="form-control" required>
             </div>
             <div class="form-group">
                 {{ form.content.label(class='form-control-sm btn-sm btn-light') }}
@@ -18,6 +15,9 @@
             <div class="form-group">
                 {{ form.category.label(class='form-control-sm btn-sm btn-light') }}
                 {{ form.category(class='form-control') }}
+            </div>
+            <div class="form-control">
+                <input type="file" name="photo" class="form-control" required>
             </div>
             <div class="form-group">
                 {{ form.submit(class='form-control-sm btn-sm btn-light') }}

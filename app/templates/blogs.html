@@ -1,4 +1,5 @@
-{% macro all_blogs(blogs, del_form) %}
+{% from "edit_blog.html" import edit_blog with context %}
+{% macro all_blogs(blogs, del_form, edit_form) %}
 {% for blog in blogs %}
 <div class="blog-items">
     <ul class="pl-0 ">
@@ -52,13 +53,17 @@
                             {{del_form.post_id(value=blog.id, class='d-none')}}
                             {{ del_form.submit(class='form-control-sm btn btn-danger') }}
                         </fieldset>
-                        <form class="d-inline-flex" action="" method="POST">
-                            <fieldset>
-                                {{ del_form.hidden_tag() }}
-                                {{del_form.post_id(value=blog.id, class='d-none')}}
-                                {{ del_form.submit(class='form-control-sm btn btn-danger') }}
-                            </fieldset>
-                        </form>
+                        <div class="edit-blog-form">
+                            {{ edit_blog(edit_form, blog) }}
+                        </div>
+                    </form>
+                    <form class="d-inline-flex" action="" method="POST">
+                        <fieldset>
+                            {{ del_form.hidden_tag() }}
+                            {{del_form.post_id(value=blog.title, class='d-none')}}
+                            {{ del_form.submit(class='form-control-sm btn btn-danger') }}
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </li>

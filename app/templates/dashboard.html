@@ -7,7 +7,8 @@
         <h1>{{title}}</h1>
         <ul class="d-block pl-0">
             <li>
-                <a class="nav-link" data-toggle='collapse' data-target='#posts' aria-expanded="false" href="#">Posts</a>
+                <a class="nav-link posts-options" data-toggle='collapse' data-target='#posts' aria-expanded="false"
+                    href="#">Posts</a>
                 <ul id="posts" class="collapse">
                     <li>
                         <a class="all-posts" onclick="clicked()" href="">all</a>
@@ -35,15 +36,15 @@
     <div class="main px-3 ml-3">
         <div class="dash-content">
             <div class=" mb-3">
-                <a href="#new-blog-form" on-click="newBlogForm()" class="text-light m-0 btn btn-success">
+                <a href="#new-blog-form" on-click="newBlogForm()" class="text-light m-0 btn btn-success new-blog-btn">
                     New Blog Post
                 </a>
             </div>
-            <div class="blog-form d-none">
+            <div class="blog-form d-none new-blog">
                 {{ new_blog(form) }}
             </div>
-            <div class="all-blogs">
-                {{ all_blogs(blogs, del_form) }}
+            <div class="all-blogs dn">
+                {{ all_blogs(blogs, del_form, edit_form) }}
             </div>
         </div>
     </div>

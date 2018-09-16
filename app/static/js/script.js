@@ -6,9 +6,15 @@ function clicked() {
 
 // i has got to fucking sleep at this point now
 
-$(document).ready(function() {
-    $(".all-posts").click(function(e) {
+$(document).ready(function () {
+    $(".posts-options").click(function (e) {
         e.preventDefault();
-        console.log("srcxccy");
+        $('.new-blog').addClass('d-none');
+        $('.all-blogs').removeClass('d-none');
+    });
+    $(".new-blog-btn").click(function (e) {
+        e.preventDefault();
+        $('.new-blog').removeClass('d-none');
+        $('.all-blogs').addClass('d-none');
     });
 });
