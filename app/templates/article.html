@@ -16,10 +16,12 @@
                 <div class="border-top border-bottom border-grey d-flex">
                     <div class="art-author d-flex flex-fill  my-2">
                         <img src="" alt="">
-                        <h3 class="text-upper d-flex align-self-center">{{ article.author.username }}</h3>
+                        <h3 class="text-upper d-flex align-self-center">
+                            <span class="text-muted font-italic pr-3">by</span>
+                            {{ article.author.username }}</h3>
                     </div>
                     <div class="art-comments d-block flex-fill pl-5  my-3 border-left border-light">
-                        <h4 class="mb-0">{{ article.comments.all() | length }}</h4>
+                        <h4 href='#comments' class="mb-0">{{ article.comments.all() | length }}</h4>
                         <h6 class="text-muted">Comments</h6>
                     </div>
                     <div class="art-comments d-block flex-fill pl-5  my-3 border-left border-light">
@@ -69,7 +71,7 @@
                     </form>
                 </div>
                 {% for comment in article.comments.all() %}
-                <div class="comments my-2">
+                <div class="comments my-2" id="comments">
                     <p>By
                         <span class="font-italic text-info">{{ comment.author.username }}
                         </span>
