@@ -5,7 +5,7 @@ from app.models import User, BlogPost, Image, Comment
 from flask_migrate import Migrate, MigrateCommand
 
 # import the create app funtion from app and create an instance of the entire app while passing in the cofiguration settings in the parameters of the funtion
-app = create_app('development')
+app = create_app('production')
 
 manager = Manager(app)
 migrate = Migrate(app, db)
